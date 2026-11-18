@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #070b10;
+  --color-ink-900: #0a1018;
+  --color-ink-800: #0f1620;
+  --color-ink-700: #121a24;
+  --color-ink-600: #17202b;
+  --color-line-800: #1c2732;
+  --color-line-700: #263440;
+  --color-line-600: #33434f;
+
+  --color-mist-100: #edf1f4;
+  --color-mist-300: #c3ccd3;
+  --color-mist-500: #8b98a5;
+  --color-mist-700: #5c6b78;
+
+  --color-evidence-500: #c4392b;
+  --color-evidence-400: #d9503f;
+  --color-evidence-950: #22110d;
+  --color-verified-500: #2e9b6b;
+  --color-verified-400: #45b783;
+  --color-verified-950: #0c1f16;
+  --color-caution-500: #c98a2e;
+  --color-caution-400: #dba24e;
+  --color-caution-950: #221a0b;
+  --color-signal-500: #4f7fa6;
+  --color-signal-400: #6b9bc2;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-ink-900);
+  color: var(--color-mist-100);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  border-color: var(--color-line-800);
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-line-700); border-radius: 4px; }
+
+@keyframes scanline {
+  0% { transform: translateY(-6%); }
+  50% { transform: translateY(106%); }
+  100% { transform: translateY(-6%); }
+}
+.animate-scanline { animation: scanline 2.4s ease-in-out infinite; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.animate-pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fade-in-up 0.35s ease-out both; }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+:focus-visible {
+  outline: 2px solid var(--color-signal-400);
+  outline-offset: 2px;
+}
+
+@media print {
+  body * { visibility: hidden !important; }
+  #form6-sheet, #form6-sheet * { visibility: visible !important; }
+  #form6-sheet { position: absolute; inset: 0 auto auto 0; width: 100%; }
+}
